@@ -56,6 +56,18 @@ typedef struct {
     WebSocketFrameKind kind;
 } WebSocketFrame;
 
+typedef enum {
+    WebSocketCloseReason_Normal = 1000,
+    WebSocketCloseReason_GoingAway = 1001,
+    WebSocketCloseReason_ProtocolError = 1002,
+    WebSocketCloseReason_CannotAccept = 1003,
+    WebSocketCloseReason_InvalidDate = 1007,
+    WebSocketCloseReason_PolicyViolation = 1008,
+    WebSocketCloseReason_TooBig = 1009,
+    WebSocketCloseReason_InsufficientExtensions = 1010,
+    WebSocketCloseReason_InternalServerError = 1011,
+} WebSocketCloseReason;
+
 bool websocket_frame_ready(int socket);
 int websocket_recv_frame(int socket, WebSocketFrame* frame);
 void websocket_destroy_frame(WebSocketFrame* frame);
