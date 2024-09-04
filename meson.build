@@ -28,7 +28,6 @@ add_project_arguments(c.get_supported_arguments([
 ]), language: 'c')
 
 subdir('websocket-c')
-
 pkg = import('pkgconfig')
 pkg.generate(
   libraries: websocket_lib,
@@ -36,3 +35,7 @@ pkg.generate(
   name: meson.project_name(),
   description: 'Small websocket library'
 )
+
+if get_option('examples').enabled()
+  subdir('examples')
+endif

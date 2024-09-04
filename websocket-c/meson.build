@@ -1,5 +1,7 @@
 websocket_lib = library('websocket-c', [
   './websocket.c',
+  './client.c',
+  './server.c',
 ], install: true)
 
 websocket_dep = declare_dependency(
@@ -8,5 +10,7 @@ websocket_dep = declare_dependency(
 )
 
 install_headers([
-  './websocket.h'
+  './websocket.h',
+  './client.h',
+  './server.h',
 ], subdir: 'websocket-c')
