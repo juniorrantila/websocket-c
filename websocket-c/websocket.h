@@ -78,6 +78,8 @@ int websocket_send_ping(int socket, void const* payload, uint64_t payload_byte_l
 int websocket_send_pong(int socket, void const* payload, uint64_t payload_byte_length);
 int websocket_send_close(int socket, uint16_t reason);
 
+void websocket_close(int socket);
+
 #ifdef __cplusplus
 }
 #endif

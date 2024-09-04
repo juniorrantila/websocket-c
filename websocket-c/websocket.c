@@ -10,6 +10,7 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 typedef struct {
     uint8_t opcode;
@@ -221,6 +222,12 @@ void websocket_destroy_frame(WebSocketFrame* frame)
         break;
     }
     memset(frame, 0, sizeof(*frame));
+}
+
+void websocket_close(int socket)
+{
+    websocket_send_close(socket, WebSocketCloseReason_Normal);
+    close(socket);
 }
 
 static int recv_header(int socket, WebSocketHeader* header_out)
